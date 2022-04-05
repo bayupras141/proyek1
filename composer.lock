@@ -1248,40 +1248,6 @@
             "time": "2022-03-23T12:38:24+00:00"
         },
         {
-<<<<<<< HEAD
-            "name": "league/commonmark",
-            "version": "1.6.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "2b8185c13bc9578367a5bf901881d1c1b5bbd09b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/2b8185c13bc9578367a5bf901881d1c1b5bbd09b",
-                "reference": "2b8185c13bc9578367a5bf901881d1c1b5bbd09b",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "php": "^7.1 || ^8.0"
-            },
-            "conflict": {
-                "scrutinizer/ocular": "1.7.*"
-            },
-            "require-dev": {
-                "cebe/markdown": "~1.0",
-                "commonmark/commonmark.js": "0.29.2",
-                "erusev/parsedown": "~1.0",
-                "ext-json": "*",
-                "github/gfm": "0.29.0",
-                "michelf/php-markdown": "~1.4",
-                "mikehaertl/php-shellcommand": "^1.4",
-                "phpstan/phpstan": "^0.12.90",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.2",
-                "scrutinizer/ocular": "^1.5",
-                "symfony/finder": "^4.2"
-=======
             "name": "laravel/ui",
             "version": "v3.4.5",
             "source": {
@@ -1304,14 +1270,8 @@
             },
             "require-dev": {
                 "orchestra/testbench": "^6.23|^7.0"
->>>>>>> 6b34a59f3e6056cf57d414ebbea621b7a5884c3b
             },
-            "bin": [
-                "bin/commonmark"
-            ],
             "type": "library",
-<<<<<<< HEAD
-=======
             "extra": {
                 "branch-alias": {
                     "dev-master": "3.x-dev"
@@ -1322,7 +1282,6 @@
                     ]
                 }
             },
->>>>>>> 6b34a59f3e6056cf57d414ebbea621b7a5884c3b
             "autoload": {
                 "psr-4": {
                     "Laravel\\Ui\\": "src/",
@@ -1339,24 +1298,12 @@
                     "email": "taylor@laravel.com"
                 }
             ],
-<<<<<<< HEAD
-            "description": "Highly-extensible PHP Markdown parser which fully supports the CommonMark spec and Github-Flavored Markdown (GFM)",
-            "homepage": "https://commonmark.thephpleague.com",
-=======
             "description": "Laravel UI utilities and presets.",
->>>>>>> 6b34a59f3e6056cf57d414ebbea621b7a5884c3b
             "keywords": [
                 "laravel",
                 "ui"
             ],
             "support": {
-<<<<<<< HEAD
-                "docs": "https://commonmark.thephpleague.com/",
-                "issues": "https://github.com/thephpleague/commonmark/issues",
-                "rss": "https://github.com/thephpleague/commonmark/releases.atom",
-                "source": "https://github.com/thephpleague/commonmark"
-            },
-=======
                 "source": "https://github.com/laravel/ui/tree/v3.4.5"
             },
             "time": "2022-02-21T14:59:16+00:00"
@@ -1434,7 +1381,6 @@
                 "rss": "https://github.com/thephpleague/commonmark/releases.atom",
                 "source": "https://github.com/thephpleague/commonmark"
             },
->>>>>>> 6b34a59f3e6056cf57d414ebbea621b7a5884c3b
             "funding": [
                 {
                     "url": "https://www.colinodell.com/sponsor",
