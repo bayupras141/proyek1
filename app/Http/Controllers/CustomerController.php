@@ -39,18 +39,18 @@ class CustomerController extends Controller
     {
                    //melakukan validasi data
                    $customer = new Customer();
-                   $customer -> nik = $request-> get('Nik');
-                   $customer -> nama = $request-> get('Nama');
-                   $customer -> alamat = $request-> get('Alamat');
-                   $customer -> email = $request-> get('Email');
-                   $customer -> username = $request-> get('Username');
-                   $customer -> password = $request-> get('Password');
-                   $customer -> no_hp = $request-> get('No Hp');
-                   $customer -> jenis_kelamin = $request-> get('Jenis Kelamin');
+                   $customer -> nik = $request-> get('nik');
+                   $customer -> nama = $request-> get('nama');
+                   $customer -> alamat = $request-> get('alamat');
+                   $customer -> email = $request-> get('email');
+                   $customer -> username = $request-> get('username');
+                   $customer -> password = $request-> get('password');
+                   $customer -> no_hp = $request-> get('no_hp');
+                   $customer -> jenis_kelamin = $request-> get('jenis_kelamin');
                    
                    $customer->  save();
        
-                   //jika data berhasil ditambahkan, akan kembali ke halaman utama
+                   //jika data berhasil ditambahkan, akan kembali ke halaman  dengan status success dan menampilkan pesan data berhasil ditambahkan
                    return redirect()->route('customer.index')
                        ->with('success', 'Customers Berhasil Ditambahkan');
     }
