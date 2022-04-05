@@ -14,11 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-
-
-
-
-    // return login
     return view('auth.login');
 });
 
