@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/laporan', [App\Http\Controllers\LaporanController::class, 'index'])->name('laporan');
 
 // create route resource
 Route::resource('tipe', App\Http\Controllers\TipeController::class);
