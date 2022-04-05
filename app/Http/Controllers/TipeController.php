@@ -27,7 +27,8 @@ class TipeController extends Controller
      */
     public function create()
     {
-        //
+        // return to tipe.create
+        return view('tipe.create');
     }
 
     /**

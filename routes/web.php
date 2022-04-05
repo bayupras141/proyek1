@@ -14,11 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-
-
-
-
-    // return login
     return view('auth.login');
 });
 
@@ -26,9 +21,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// create route resource tipe
+// create route resource
 Route::resource('tipe', App\Http\Controllers\TipeController::class);
-
 Route::resource('customer', App\Http\Controllers\CustomerController::class);
-
 Route::resource('produk', App\Http\Controllers\ProdukController::class);
+Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);
