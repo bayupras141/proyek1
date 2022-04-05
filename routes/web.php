@@ -28,6 +28,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // create route resource tipe
 Route::resource('tipe', App\Http\Controllers\TipeController::class);
-Route::resource('customer', App\Http\Controllers\CustomerController::class);
 
-// Route::resource('/tipe', [App\Http\Controllers\TipeController::class])->name('tipe');
+Route::resource('customer', App\Http\Controllers\CustomerController::class);
