@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tipe extends Model
 {
     use HasFactory;
-    protected $table = 'tipe';
+    protected $table = 'type';
 
     protected $fillable = [
         'merk',
