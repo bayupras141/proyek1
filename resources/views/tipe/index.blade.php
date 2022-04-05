@@ -6,6 +6,13 @@
           <div class="col-sm-6">
             <h1 class="m-0">Tipe</h1>
           </div>
+          <div class="col-sm-6">
+            {{-- create buuton --}}
+            <ol class="breadcrumb float-sm-right">
+              <a href="{{route('tipe.create')}}" class="btn btn-primary">Tambah</a>
+            </ol>
+
+          </div><!-- /.col -->
         </div>
     </div><!-- /.container-fluid -->
 @endsection
