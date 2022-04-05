@@ -37,13 +37,20 @@
                                 <tr>
                                     <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Merk</th>
                                     <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Jenis</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($tipe as $row)
                                     <tr class="odd">
-                                      <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                      <td>Firefox 1.0</td>
+                                        <td>{{ $row->merk }}</td>
+                                        <td>{{ $row->jenis }}</td>
+                                        <td>
+                                            <a href="" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-primary">Edit</a> 
+                                            <a id="btn-hapus" href="" onclick="return confirm('Yakin hapus data ? ');" data-toggle="tooltip" data-placement="bottom" title="Hapus" class="btn btn-danger">Hapus</a>
+                                        </td>
                                     </tr>
+                                    @endforeach 
                                 </tbody>
                             </table>
                         </div>
