@@ -24,5 +24,3 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // create route resource tipe
 Route::resource('tipe', App\Http\Controllers\TipeController::class);
-
-// Route::resource('/tipe', [App\Http\Controllers\TipeController::class])->name('tipe');
