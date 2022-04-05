@@ -15,16 +15,7 @@
    <div class="row justify-content-center align-items-center">
        <div class="card" style="width: 150rem;">
            <div class="card-body">
-               @if ($errors->any())
-               <div class="alert alert-danger">
-                   <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                   <ul>
-                       @foreach ($errors->all() as $error)
-                           <li>{{ $error }}</li>
-                       @endforeach
-                   </ul>
-               </div>
-           @endif
+            
            <form method="post" action="{{ route('customer.store') }}" id="myForm" enctype='multipart/form-data' >
            @csrf
            <div class="form-group">
@@ -36,6 +27,10 @@
                    <input type="text" name="nama" class="form-control" id="nama" aria-describedby="nama" >                
                </div>
                <div class="form-group">
+                   <label for="username">Username</label>                    
+                   <input type="text" name="username" class="form-control" id="username" aria-describedby="nama" >                
+               </div>
+               <div class="form-group">
                    <label for="alamat">Alamat</label>                    
                    <input type="text" name="alamat" class="form-control" id="alamat" aria-describedby="alamat" >                
                </div>
@@ -45,7 +40,7 @@
                </div>
                <div class="form-group">
                    <label for="password">Password</label>                    
-                   <input type="text" name="password" class="form-control" id="password" aria-describedby="password" >                
+                   <input type="password" name="password" class="form-control" id="password" aria-describedby="password" >                
                </div>
                <div class="form-group">
                    <label for="no_hp">No Hp</label>                    
