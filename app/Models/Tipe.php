@@ -15,9 +15,4 @@ class Tipe extends Model
         'jenis',
     ];
 
-    // belongsTo transaksi
-    // public function transaksi()
-    // {
-    //     return $this->hasMany(Transaksi::class, 'paket_id');
-    // }
 }
