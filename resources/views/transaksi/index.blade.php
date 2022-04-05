@@ -1,5 +1,6 @@
-@extends('layout.dashboard')
-@section('content')
+@extends('layouts.global')
+@section('title', 'Transaksi')
+@section('contentHeader')
 <div class="container-fluid">
     <div class="row">
         <div class="col">
