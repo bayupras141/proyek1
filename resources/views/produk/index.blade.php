@@ -1,3 +1,4 @@
+
 @extends('layouts.global')
 @section('title', 'Produk')
 @section('contentHeader')
@@ -14,7 +15,10 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Table Produk</h3>
+            <a href="" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-success">
+                
+            Tambah Data</a>
+
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -28,25 +32,33 @@
                             <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
                                 <thead>
                                 <tr>
-                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Warna</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Harga</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Stok</th>
-                                </tr>
+                                <th class="" >Nama</th>
+                                <th class="" >Warna</th>
+                                <th class="" >Harga</th>
+                                <th class="" >Stok</th>
+                            </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd">
-                                      <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                      <td>Firefox 1.0</td>
-                                      <td>Firefo</td>
-                                      <td>Firef</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                @foreach ($data as $row)
+                                <tr>      
+                               
+                               <td>{{ $loop->iteration }}</td>
+                               <td>{{ $row->nama }}</td>
+                               <td>{{ $row->warna }}</td>
+                               <td>{{ $row->harga }}</td>
+                               <td>{{ $row->stok }}</td>
+                               <td>
+                               <a href="" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-primary">Edit</a>
+                                <a id="btn-hapus" href="" onclick="return confirm('Yakin hapus data ? ');" data-toggle="tooltip" data-placement="bottom" title="Hapus" class="btn btn-danger">Hapus</a>
+                                                           
+                            </td></tr>
+                           @endforeach    
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-          </div>  
-    </div>
+            </div>
+      </div>  
+</div>
 </div>
 @endsection
