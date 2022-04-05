@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -25,7 +25,8 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        $customer =Customer::all();
+        return view('customer.create',['customer'  =>$customer]);
     }
 
     /**
@@ -36,7 +37,22 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+                   //melakukan validasi data
+                   $customer = new Customer();
+                   $customer -> nik = $request-> get('Nik');
+                   $customer -> nama = $request-> get('Nama');
+                   $customer -> alamat = $request-> get('Alamat');
+                   $customer -> email = $request-> get('Email');
+                   $customer -> username = $request-> get('Username');
+                   $customer -> password = $request-> get('Password');
+                   $customer -> no_hp = $request-> get('No Hp');
+                   $customer -> jenis_kelamin = $request-> get('Jenis Kelamin');
+                   
+                   $customer->  save();
+       
+                   //jika data berhasil ditambahkan, akan kembali ke halaman utama
+                   return redirect()->route('customer.index')
+                       ->with('success', 'Customers Berhasil Ditambahkan');
     }
 
     /**
