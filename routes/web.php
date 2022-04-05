@@ -30,3 +30,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('tipe', App\Http\Controllers\TipeController::class);
 
 Route::resource('customer', App\Http\Controllers\CustomerController::class);
+
+Route::resource('produk', App\Http\Controllers\ProdukController::class);
