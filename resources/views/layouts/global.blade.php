@@ -34,7 +34,7 @@
     <img class="animation__shake" src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
   </div>
 
- @include('layouts.navbar')
+  @include('layouts.navbar')
 
   @include('layouts.sidebar')
 
@@ -50,10 +50,6 @@
     <section class="content">
     @yield('content')
      
-        <!-- /.row -->
-        <!-- Main row -->
-        
-        <!-- /.row (main row) -->
     </section>
     <!-- /.content -->
   </div>
