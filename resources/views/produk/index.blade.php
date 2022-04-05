@@ -1,10 +1,10 @@
 @extends('layouts.global')
-@section('title', 'Tipe')
+@section('title', 'Produk')
 @section('contentHeader')
     <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Tipe</h1>
+            <h1 class="m-0">Produk</h1>
           </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -14,7 +14,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Table Tipe</h3>
+              <h3 class="card-title">Table Produk</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -28,14 +28,18 @@
                             <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
                                 <thead>
                                 <tr>
-                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Merk</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Jenis</th>
+                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Warna</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Harga</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Stok</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="odd">
                                       <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
                                       <td>Firefox 1.0</td>
+                                      <td>Firefo</td>
+                                      <td>Firef</td>
                                     </tr>
                                 </tbody>
                             </table>
