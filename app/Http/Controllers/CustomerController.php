@@ -95,8 +95,11 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy($nik)
     {
-        //
+
+        Customer::find($nik)->delete();
+        return redirect()->route('customer.index')
+            -> with('success', 'Customer Berhasil Dihapus');
     }
 }

@@ -16,32 +16,38 @@
        <div class="card" style="width: 150rem;">
            <div class="card-body">
             
-           <form method="post" action="{{ route('customer.store') }}" id="myForm" enctype='multipart/form-data' >
+           <form method="post" action="{{ route('customer.store') }}" >
            @csrf
            <div class="form-group">
-                   <label for="nik">Nik</label>                    
-                   <input type="text" name="nik" class="form-control" id="nik" aria-describedby="nik" >                
-               </div>
-               <div class="form-group">
                    <label for="nama">Nama</label>                    
                    <input type="text" name="nama" class="form-control" id="nama" aria-describedby="nama" >                
                </div>
-               <div class="form-group">
-                   <label for="username">Username</label>                    
-                   <input type="text" name="username" class="form-control" id="username" aria-describedby="nama" >                
-               </div>
+
                <div class="form-group">
                    <label for="alamat">Alamat</label>                    
                    <input type="text" name="alamat" class="form-control" id="alamat" aria-describedby="alamat" >                
                </div>
+
+               <div class="form-group">
+                   <label for="nik">Nik</label>                    
+                   <input type="text" name="nik" class="form-control" id="nik" aria-describedby="nik" >                
+               </div>
+
                <div class="form-group">
                    <label for="email">Email</label>                    
                    <input type="text" name="email" class="form-control" id="email" aria-describedby="email" >                
                </div>
+
+               <div class="form-group">
+                   <label for="username">Username</label>                    
+                   <input type="text" name="username" class="form-control" id="username" aria-describedby="nama" >                
+               </div>
+
                <div class="form-group">
                    <label for="password">Password</label>                    
                    <input type="password" name="password" class="form-control" id="password" aria-describedby="password" >                
                </div>
+
                <div class="form-group">
                    <label for="no_hp">No Hp</label>                    
                    <input type="text" name="no_hp" class="form-control" id="no_hp" aria-describedby="no_hp" >                
