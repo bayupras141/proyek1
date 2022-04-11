@@ -47,7 +47,7 @@
                                <td>{{ $loop->iteration }}</td>
                                <td>{{ $row->nama }}</td>
                                <td>{{ $row->warna }}</td>
-                               <td>{{ $row->harga }}</td>
+                                 <td>Rp {{ number_format($row->harga,0,',','.') }}</td>
                                <td>{{ $row->stok }}</td>
                                <td>
                                <a href="" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-primary">Edit</a>
