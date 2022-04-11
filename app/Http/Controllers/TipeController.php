@@ -39,7 +39,20 @@ class TipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate request
+        $request->validate([
+            'merk' => 'required',
+            'jenis' => 'required'
+        ]);
+
+        // create new tipe
+        $tipe = new Tipe;
+        $tipe->merk = $request->merk;
+        $tipe->jenis = $request->jenis;
+        $tipe->save();
+
+        // return to tipe.index wirt success message
+        return redirect()->route('tipe.index')->with('success', 'Tipe berhasil ditambahkan');
     }
 
     /**
