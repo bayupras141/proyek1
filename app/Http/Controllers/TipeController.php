@@ -39,7 +39,20 @@ class TipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate request
+        $request->validate([
+            'merk' => 'required',
+            'jenis' => 'required'
+        ]);
+
+        // create new tipe
+        $tipe = new Tipe;
+        $tipe->merk = $request->merk;
+        $tipe->jenis = $request->jenis;
+        $tipe->save();
+
+        // return to tipe.index wirt success message
+        return redirect()->route('tipe.index')->with('success', 'Tipe berhasil ditambahkan');
     }
 
     /**
@@ -61,7 +74,10 @@ class TipeController extends Controller
      */
     public function edit(Tipe $tipe)
     {
-        //
+        // return to tipe.edit
+        return view('tipe.edit', [
+            'tipe' => $tipe
+        ]);
     }
 
     /**
@@ -73,7 +89,19 @@ class TipeController extends Controller
      */
     public function update(Request $request, Tipe $tipe)
     {
-        //
+        // validate request
+        $request->validate([
+            'merk' => 'required',
+            'jenis' => 'required'
+        ]);
+
+        // update tipe
+        $tipe->merk = $request->merk;
+        $tipe->jenis = $request->jenis;
+        $tipe->save();
+
+        // return to tipe.index wirt success message
+        return redirect()->route('tipe.index')->with('success', 'Tipe berhasil diubah');
     }
 
     /**
@@ -84,6 +112,8 @@ class TipeController extends Controller
      */
     public function destroy(Tipe $tipe)
     {
-        //
+        $tipe->delete();
+        // return to tipe.index wirt success message
+        return redirect()->route('tipe.index')->with('success', 'Tipe berhasil dihapus');
     }
 }

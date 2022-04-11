@@ -13,26 +13,22 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-
-            <form>
-                <div class="card-body">
-                    <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+          <div class="card-body">
+            <form method="post" action="{{ route('tipe.store') }}" enctype="multipart/form-data">
+              @csrf
+              <div class="form-group">
+                <label for="merk">Merk</label>
+                <input type="text" name="merk" class="form-control" id="merk" placeholder="Enter Merk">
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <label for="jenis">Jenis</label>
+                <input type="text" name="jenis" class="form-control" id="jenis" placeholder="Jenis">
               </div>
-
-            </div>
-            <!-- /.card-body -->
-            
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
-    </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+          <!-- /.card-body -->
+      </div>
     </div>
 </div>
 @endsection

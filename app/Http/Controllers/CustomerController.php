@@ -74,7 +74,8 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        // return edit view with data
+        return view('customer.edit', compact('customer'));
     }
 
     /**
@@ -86,7 +87,20 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        // update data
+        $customer->nik = $request->get('nik');
+        $customer->nama = $request->get('nama');
+        $customer->alamat = $request->get('alamat');
+        $customer->email = $request->get('email');
+        $customer->username = $request->get('username');
+        // $customer->password = $request->get('password');
+        $customer->no_hp = $request->get('no_hp');
+        $customer->jenis_kelamin = $request->get('jenis_kelamin');
+        $customer->save();
+
+        // return to index with success message
+        return redirect()->route('customer.index')
+            ->with('success', 'Customers Berhasil Diubah');
     }
 
     /**

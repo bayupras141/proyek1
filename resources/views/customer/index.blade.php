@@ -39,35 +39,41 @@
                             <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
                                 <thead>
                                 <tr>
-                                <th class="" >No</th>
-                                <th class="" >Nik</th>
-                                <th class="" >Nama</th>
-                                <th class="" >Alamat</th>
-                                <th class="" >Email</th>
-                                <th class="" >Username</th>
-                                <th class="" >No_hp</th>
-                                <th class="" >jenis_kelamin</th>
-                                <th class="" >Action</th>
-                            </tr>
+                                    <th class="" >No</th>
+                                    <th class="" >Nik</th>
+                                    <th class="" >Nama</th>
+                                    <th class="" >Alamat</th>
+                                    <th class="" >Email</th>
+                                    <th class="" >Username</th>
+                                    <th class="" >No_hp</th>
+                                    <th class="" >jenis_kelamin</th>
+                                    <th class="" >Action</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                               @foreach ($data as $row)
-                               <tr>      
+                                    @foreach ($data as $row)
+                                    <tr>      
                                
-                                   <td>{{ $loop->iteration }}</td>
-                                   <td>{{ $row->nik }}</td>
-                                   <td>{{ $row->nama }}</td>
-                                   <td>{{ $row->alamat }}</td>
-                                   <td>{{ $row->email }}</td>
-                                   <td>{{ $row->username }}</td>
-                                   <td>{{ $row->no_hp }}</td>
-                                   <td>{{ $row->jenis_kelamin }}</td>
-                                   <td>
-                                   <a href="" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-primary">Edit</a>
-                                    <a id="btn-hapus" href="{{ route('customer.destroy',$row->id) }}" onclick="return confirm('Yakin hapus data ? ');" data-toggle="tooltip" data-placement="bottom" title="Hapus" class="btn btn-danger">Hapus</a>
-                                                               
-                                </td></tr>
-                               @endforeach    
+
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $row->nik }}</td>
+                                        <td>{{ $row->nama }}</td>
+                                        <td>{{ $row->alamat }}</td>
+                                        <td>{{ $row->email }}</td>
+                                        <td>{{ $row->username }}</td>
+                                        <td>{{ $row->no_hp }}</td>
+                                        <td>{{ $row->jenis_kelamin }}</td>
+                                        <td>
+                                            {{-- edit button customer with class pencil --}}
+                                            <a href="{{ route('customer.edit', [$row->id]) }}" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                            {{-- delete button customer with class trash --}}
+                                            <form onsubmit="return confirm('Aakah anda yakin ingin menghapus?')" action="{{ route('customer.destroy', [$row->id]) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
