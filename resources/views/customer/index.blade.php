@@ -64,7 +64,7 @@
                                    <td>{{ $row->jenis_kelamin }}</td>
                                    <td>
                                    <a href="" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-primary">Edit</a>
-                                    <a id="btn-hapus" href="{{ route('customer.destroy',$row->nik) }}" onclick="return confirm('Yakin hapus data ? ');" data-toggle="tooltip" data-placement="bottom" title="Hapus" class="btn btn-danger">Hapus</a>
+                                    <a id="btn-hapus" href="{{ route('customer.destroy',$row->id) }}" onclick="return confirm('Yakin hapus data ? ');" data-toggle="tooltip" data-placement="bottom" title="Hapus" class="btn btn-danger">Hapus</a>
                                                                
                                 </td></tr>
                                @endforeach    
