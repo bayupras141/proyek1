@@ -16,7 +16,7 @@
        <div class="card" style="width: 150rem;">
            <div class="card-body">
             
-           <form method="post" action="{{ route('customer.store') }}" >
+           <form method="post" action="{{ route('customer.store') }}" enctype="multipart/form-data">
            @csrf
            <div class="form-group">
                    <label for="nama">Nama</label>                    
