@@ -6,6 +6,17 @@
           <div class="col-sm-6">
             <h1 class="m-0">Tipe</h1>
           </div>
+          <div>
+              {{-- create alert json succes message --}}
+                @if (session('status'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('status') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+          </div>
           <div class="col-sm-6">
             {{-- create buuton --}}
             <ol class="breadcrumb float-sm-right">
