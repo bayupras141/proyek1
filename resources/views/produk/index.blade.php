@@ -31,12 +31,14 @@
                         <div class="col-sm-12">
                             <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
                                 <thead>
-                                <tr>
-                                <th class="" >Nama</th>
-                                <th class="" >Warna</th>
-                                <th class="" >Harga</th>
-                                <th class="" >Stok</th>
-                            </tr>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Warna</th>
+                                        <th>Harga</th>
+                                        <th>Stok</th>
+                                        <th>Aksi</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($data as $row)
