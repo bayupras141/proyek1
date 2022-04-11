@@ -74,7 +74,10 @@ class TipeController extends Controller
      */
     public function edit(Tipe $tipe)
     {
-        //
+        // return to tipe.edit
+        return view('tipe.edit', [
+            'tipe' => $tipe
+        ]);
     }
 
     /**
@@ -97,6 +100,6 @@ class TipeController extends Controller
      */
     public function destroy(Tipe $tipe)
     {
-        //
+        $tipe->delete();
     }
 }
