@@ -15,8 +15,6 @@
    <div class="row justify-content-center align-items-center">
        <div class="card" style="width: 150rem;">
            <div class="card-body">
-               
-            {{-- layout edit form --}}
             <form method="post" action="{{ route('customer.update', [$customer->id]) }}" enctype="multipart/form-data" class="d-inline">
             @csrf
             @method('PUT')
@@ -57,7 +55,6 @@
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-           {{-- button back to index --}}
               <a href="{{ route('customer.index') }}" class="btn btn-secondary">Back</a>
            </div>
        </div>
