@@ -47,12 +47,14 @@
                     <label for="no_hp">No Hp</label>                    
                     <input type="text" name="no_hp" class="form-control" id="no_hp" aria-describedby="no_hp" value="{{ $customer->no_hp }}">
                 </div>
-
-                <div class="form-group">
-                    <label for="jenis_kelamin">Jenis Kelamin</label>                    
-                    <input type="text" name="jenis_kelamin" class="form-control" id="jenis_kelamin" aria-describedby="jenis_kelamin" value="{{ $customer->jenis_kelamin }}">
-                </div>
-
+                {{-- jenis kelamin input by dropdown --}}
+                    <div class="form-group">
+                        <label for="jenis_kelamin">Jenis Kelamin</label>
+                        <select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
+                            <option value="Laki-laki" {{ $customer->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                            <option value="Perempuan" {{ $customer->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                        </select>
+                    </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
               <a href="{{ route('customer.index') }}" class="btn btn-secondary">Back</a>
