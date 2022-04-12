@@ -15,10 +15,16 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-            <a href="" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-success">
-                
-            Tambah Data</a>
-
+                <div class="row">
+                    <div class="col-sm-6">
+                        
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="{{ route('produk.create') }}" class="btn btn-primary float-right">
+                            <i class="fas fa-plus"></i> Add Produk
+                        </a>
+                    </div>
+                </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
