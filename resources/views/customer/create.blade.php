@@ -16,7 +16,7 @@
        <div class="card" style="width: 150rem;">
            <div class="card-body">
             
-           <form method="post" action="{{ route('customer.store') }}" enctype="multipart/form-data">
+           <form method="post" action="{{ route('customer.store') }}" enctype="multipart/form-data" class="d-inline">
            @csrf
            <div class="form-group">
                    <label for="nama">Nama</label>                    
@@ -59,6 +59,7 @@
                
            <button type="submit" class="btn btn-primary">Submit</button>
            </form>
+           <a href="{{ route('customer.index') }}" class="btn btn-secondary">Back</a>
            </div>
        </div>
    </div>
