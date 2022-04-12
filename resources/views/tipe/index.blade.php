@@ -17,13 +17,6 @@
                 </div>
                 @endif
           </div>
-          <div class="col-sm-6">
-            {{-- create buuton --}}
-            <ol class="breadcrumb float-sm-right">
-              <a href="{{route('tipe.create')}}" class="btn btn-primary">Tambah</a>
-            </ol>
-
-          </div><!-- /.col -->
         </div>
     </div><!-- /.container-fluid -->
 @endsection
@@ -32,7 +25,16 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Table Tipe</h3>
+                <div class="row">
+                    <div class="col-sm-6">
+                        
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="{{ route('tipe.create') }}" class="btn btn-primary float-right">
+                            <i class="fas fa-plus"></i> Add Tipe
+                        </a>
+                    </div>
+                </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
