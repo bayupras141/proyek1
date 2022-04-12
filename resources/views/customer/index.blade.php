@@ -6,7 +6,7 @@
           <div class="col-sm-6">
             <h1 class="m-0">Customers</h1>
           </div>
-        </div>
+        </div class="col-sm-6">
         @if (session('status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('status') }}

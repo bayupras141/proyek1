@@ -52,7 +52,7 @@ class TipeController extends Controller
         $tipe->save();
 
         // return to tipe.index wirt success message
-        return redirect()->route('tipe.index')->with('success', 'Tipe berhasil ditambahkan');
+        return redirect()->route('tipe.index')->with('status', 'Tipe berhasil ditambahkan');
     }
 
     /**
@@ -101,7 +101,7 @@ class TipeController extends Controller
         $tipe->save();
 
         // return to tipe.index wirt success message
-        return redirect()->route('tipe.index')->with('success', 'Tipe berhasil diubah');
+        return redirect()->route('tipe.index')->with('status', 'Tipe berhasil diubah');
     }
 
     /**
@@ -114,6 +114,6 @@ class TipeController extends Controller
     {
         $tipe->delete();
         // return to tipe.index wirt success message
-        return redirect()->route('tipe.index')->with('success', 'Tipe berhasil dihapus');
+        return redirect()->route('tipe.index')->with('status', 'Tipe berhasil dihapus');
     }
 }

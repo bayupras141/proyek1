@@ -52,7 +52,7 @@ class CustomerController extends Controller
        
                    //jika data berhasil ditambahkan, akan kembali ke halaman  dengan status success dan menampilkan pesan data berhasil ditambahkan
                    return redirect()->route('customer.index')
-                       ->with('success', 'Customers Berhasil Ditambahkan');
+                       ->with('status', 'Customers Berhasil Ditambahkan');
     }
 
     /**
@@ -100,7 +100,7 @@ class CustomerController extends Controller
 
         // return to index with success message
         return redirect()->route('customer.index')
-            ->with('success', 'Customers Berhasil Diubah');
+            ->with('status', 'Customers Berhasil Diubah');
     }
 
     /**
@@ -114,6 +114,6 @@ class CustomerController extends Controller
 
         Customer::find($nik)->delete();
         return redirect()->route('customer.index')
-            -> with('success', 'Customer Berhasil Dihapus');
+            -> with('status', 'Customer Berhasil Dihapus');
     }
 }
