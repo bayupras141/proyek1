@@ -14,7 +14,7 @@
     <div class="col-md-12">
         <div class="card">
           <div class="card-body">
-            <form method="post" action="{{ route('tipe.store') }}" enctype="multipart/form-data">
+            <form class="d-inline" method="post" action="{{ route('tipe.store') }}" enctype="multipart/form-data">
               @csrf
               <div class="form-group">
                 <label for="merk">Merk</label>
@@ -26,6 +26,7 @@
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <a href="{{ route('tipe.index') }}" class="btn btn-secondary">Back</a>
           </div>
           <!-- /.card-body -->
       </div>
