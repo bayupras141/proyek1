@@ -45,8 +45,8 @@
                                     <th class="" >Alamat</th>
                                     <th class="" >Email</th>
                                     <th class="" >Username</th>
-                                    <th class="" >No_hp</th>
-                                    <th class="" >jenis_kelamin</th>
+                                    <th class="" >No hp</th>
+                                    <th class="" >Jenis kelamin</th>
                                     <th class="" >Action</th>
                                 </tr>
                                 </thead>
