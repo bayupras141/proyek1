@@ -1,146 +1,323 @@
 import 'package:flutter/material.dart';
-import 'package:katalog_motor/pages/detail.dart';
 import 'package:katalog_motor/models/motor.dart';
+import 'package:katalog_motor/pages/detail.dart';
+import 'package:katalog_motor/pages/search.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
+class HomeScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text('Katalog Motor'),
-          ),
-          body: LayoutBuilder(
-            builder: (BuildContext context, BoxConstraints constraints) {
-              if (constraints.maxWidth <= 600) {
-                return const LayoutMotorList();
-              } else if (constraints.maxWidth <= 1200) {
-                return const LayoutMotor(gridCount: 4);
-              } else {
-                return const LayoutMotor(gridCount: 6);
-              }
-            },
-          ),
-        );
-      },
+    return Scaffold(
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints){
+          if(constraints.maxWidth <= 600) {
+            return Grid(gridCount: 2);
+          }else if(constraints.maxWidth <= 1200){
+            return GridWeb(gridCount: 4,);
+          }else{
+            return GridWeb(gridCount: 6,);
+          }
+        },
+      )
     );
   }
 }
 
-class LayoutMotor extends StatelessWidget {
+class GridWeb extends StatefulWidget{
   final int gridCount;
+  GridWeb({required this.gridCount});
 
-  const LayoutMotor({Key? key, required this.gridCount}) : super(key: key);
+  @override
+  _GridWebState createState() => _GridWebState();
+}
+
+class _GridWebState extends State<GridWeb> {
+  List<Motor> _motor = [];
+  @override
+  initState() {
+    // at the beginning, all users are shown
+    _motor = motorList;
+    super.initState();
+  }
+
+  void _runFilter(String enteredKeyword) {
+    List<Motor> results = [];
+    if (enteredKeyword.isEmpty) {
+      results = motorList;
+    } else {
+      results = motorList
+          .where((motor) =>
+          motor.nama.toLowerCase().contains(enteredKeyword.toLowerCase()))
+          .toList();
+    }
+
+    // refresh the UI
+    setState(() {
+      _motor = results;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    
-    return Scrollbar(
-      isAlwaysShown: true,
-      child: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: GridView.count(
-          crossAxisCount: gridCount,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-          children: motorList.map((motor) {
-            return InkWell(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return DetailScreen(motor: motor);
-                }));
-              },
-              child: Card(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Expanded(
-                      child: Image.asset(
-                        motor.image,
-                        fit: BoxFit.cover,
-                      ),
+    var size = MediaQuery.of(context).size;
+
+    var _crossAxisSpacing = 8;
+    var _screenWidth = size.width;
+    var _crossAxisCount = 2;
+    var _width = ( _screenWidth - ((_crossAxisCount - 1) * _crossAxisSpacing)) / _crossAxisCount;
+    var cellHeight = _screenWidth <= 1200 ? 900 : 1200;
+
+    return Container(
+      height: size.height,
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Color(0xFF227093),
+                Color.fromARGB(255, 224, 169, 52)
+              ]
+          )
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(top: 16),
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    "Katalog Motor",
+                    style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                        fontSize: 18
                     ),
-                    const SizedBox(height: 8),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Text(
-                        motor.nama,
-                        style: const TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextField(
+                onChanged: (value){
+                  _runFilter(value);
+                },
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.search_rounded),
+                    border: OutlineInputBorder(
+                        borderRadius:BorderRadius.circular(40.0),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
-                      child: Text(
-                        motor.merk,
-                      ),
-                    ),
-                  ],
+                    hintText: 'Search...',
+                    fillColor: Colors.white,
+                    filled: true
                 ),
               ),
-            );
-          }).toList(),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: _motor.length > 0
+                  ? GridView.count(
+                // childAspectRatio: itemWidth / (size.height - 250),
+                childAspectRatio: _width /cellHeight,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                controller: ScrollController(keepScrollOffset: false),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                children: _motor.map((motor) {
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        return DetailScreen(motor: motor);
+                      }));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.white,
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          Stack(
+                            children: <Widget>[
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(15),
+                                child: Image.asset(
+                                  motor.image,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Text(
+                              motor.nama,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w500
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+                }).toList(),
+                crossAxisCount: widget.gridCount,
+              )
+                  : Text(
+                    "No result found",
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 24,
+                      color: Colors.white
+                    ),
+                  ),
+            ),
+            SizedBox(height: 24)
+          ],
         ),
       ),
     );
   }
 }
 
-class LayoutMotorList extends StatelessWidget {
-  const LayoutMotorList({Key? key}) : super(key: key);
+class Grid extends StatelessWidget{
+  final int gridCount;
+
+  Grid({required this.gridCount});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          final Motor motor = motorList[index];
-          return InkWell(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return DetailScreen(motor: motor);
-              }));
-            },
-            child: Card(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Expanded(
-                    flex: 1,
-                    child: Image.asset(motor.image),
+    var size = MediaQuery.of(context).size;
+    final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
+    final double itemWidth = size.width / 2;
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color.fromARGB(255, 0, 117, 252),
+            Color.fromARGB(255, 1, 52, 192)
+          ]
+        )
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SafeArea(
+              child: Container(
+                margin: EdgeInsets.only(top: 16),
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      "Katalog Motor",
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                        fontSize: 18
+                      ),
+                    ),
+                    
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return SearchPage();
+                  }));
+                },
+                child: TextField(
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.search_rounded),
+                    border: OutlineInputBorder(
+                      borderRadius:BorderRadius.circular(40.0),
+                        borderSide: BorderSide(
+                          color:Colors.white70,
+                          width: 2,
+                        )
+                    ),
+                    enabled: false,
+                    hintText: 'Search...',
+                    fillColor: Colors.white,
+                    filled: true
                   ),
-                  Expanded(
-                    flex: 2,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: GridView.count(
+                crossAxisCount: gridCount,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                childAspectRatio: (itemWidth / itemHeight),
+                controller: new ScrollController(keepScrollOffset: false),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                children: motorList.map((motor) {
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        return DetailScreen(motor: motor);
+                      }));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.white,
+                      ),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(
-                            motor.nama,
-                            style: const TextStyle(fontSize: 16.0),
+                          Expanded(
+                            child: Stack(
+                              children: <Widget>[
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: Image.asset(
+                                    motor.image,
+                                    fit: BoxFit.cover,
+                                    height: 500,
+                                  ),
+                                ),
+                                
+                              ],
+                            ),
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(motor.merk),
+                          Padding(
+                              padding: EdgeInsets.all(8),
+                              child: Text(
+                                motor.nama,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                          )
                         ],
                       ),
                     ),
-                  )
-                ],
+                  );
+                }).toList(),
               ),
             ),
-          );
-        },
-        itemCount: motorList.length,
+            SizedBox(height: 24)
+          ],
+        ),
       ),
     );
   }
+
 }
