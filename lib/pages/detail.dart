@@ -37,7 +37,13 @@ class DetailMobilePage extends StatelessWidget {
           children: <Widget>[
             Stack(
               children: <Widget>[
-                Image.asset(motor.image),
+                // image full
+                Image.asset(
+                    motor.image,
+                    width: double.infinity,
+                    fit: BoxFit.cover
+
+                ),
                 SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -74,70 +80,59 @@ class DetailMobilePage extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  // Column(
-                  //   children: <Widget>[
-                  //     const Icon(Icons.calendar_today),
-                  //     const SizedBox(height: 8.0),
-                  //     Text(
-                  //       motor.thnProduksi,
-                  //       style: informationTextStyle,
-                  //     ),
-                  //   ],
-                  // ),
-                  Column(
-                    children: <Widget>[
-                      const Text("Tahun Produksi"),
-                      const SizedBox(height: 8.0),
-                      Text(
-                        motor.thnProduksi,
-                        style: informationTextStyle,
-                      ),
-                    ],
+            SizedBox(
+              height: 20,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  ' Tahun Produksi',
+                  style: const TextStyle(
+                    // style head 2
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Oxygen',
                   ),
-                  // Column(
-                  //   children: <Widget>[
-                  //     const Icon(Icons.monetization_on),
-                  //     const SizedBox(height: 8.0),
-                  //     Text(
-                  //       place.ticketPrice,
-                  //       style: informationTextStyle,
-                  //     ),
-                  //   ],
-                  // ),
-                ],
-              ),
+                  
+                ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "  "+motor.thnProduksi,
+                      style: informationTextStyle,
+                    ),
+                  ],
+                )
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              ' Deskripsi',
+              style: const TextStyle(
+                // style head 2
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Oxygen',
+              ),    
             ),
             Container(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(10.0),
               child: Text(
                 motor.description,
-                textAlign: TextAlign.center,
+                // text style paragraph
                 style: const TextStyle(
+                  // text style paragra
                   fontSize: 16.0,
                   fontFamily: 'Oxygen',
                 ),
               ),
             ),
-            // Container(
-            //   height: 150,
-            //   child: ListView(
-            //     scrollDirection: Axis.horizontal,
-            //     children: place.imageUrls.map((url) {
-            //       return Padding(
-            //         padding: const EdgeInsets.all(4.0),
-            //         child: ClipRRect(
-            //           borderRadius: BorderRadius.circular(10),
-            //           child: Image.network(url),
-            //         ),
-            //       );
-            //     }).toList(),
-            //   ),
-            // ),
+
           ],
         ),
       ),
@@ -255,16 +250,6 @@ class _DetailWebPageState extends State<DetailWebPage> {
                                 ],
                               ),
                               const SizedBox(height: 8.0),
-                              // Row(
-                              //   children: <Widget>[
-                              //     const Icon(Icons.monetization_on),
-                              //     const SizedBox(width: 8.0),
-                              //     Text(
-                              //       widget.place.ticketPrice,
-                              //       style: informationTextStyle,
-                              //     ),
-                              //   ],
-                              // ),
                               Container(
                                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                                 child: Text(
@@ -276,6 +261,35 @@ class _DetailWebPageState extends State<DetailWebPage> {
                                   ),
                                 ),
                               ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    'Tahun Produksi',
+                                    style: const TextStyle(
+                                      fontSize: 16.0,
+                                      fontFamily: 'Oxygen',
+                                    ),
+                                  ),
+                                  SizedBox(height: 20),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        widget.motor.thnProduksi,
+                                        style: informationTextStyle,
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              // _description(), 
                             ],
                           ),
                         ),
@@ -322,4 +336,8 @@ class _FavoriteButtonState extends State<FavoriteButton> {
       },
     );
   }
+
+  
+
 }
+
