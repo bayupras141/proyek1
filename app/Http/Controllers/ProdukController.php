@@ -26,8 +26,10 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        // return to tipe.create
+        return view('produk.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
