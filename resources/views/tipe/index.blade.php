@@ -59,7 +59,7 @@
                                         <td>{{ $row->jenis }}</td>
                                         <td>
                                             <a href="{{ route('tipe.edit', [$row->id]) }}" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                            <form onsubmit="return confirm('Aakah anda yakin ingin menghapus?')" action="{{ route('tipe.destroy', [$row->id]) }}" method="POST" class="d-inline">
+                                            <form onsubmit="return confirm('Apakah anda yakin ingin menghapus?')" action="{{ route('tipe.destroy', [$row->id]) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
