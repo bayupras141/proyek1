@@ -36,10 +36,16 @@ class DatabaseHelper {
         id INTEGER PRIMARY KEY,
         nama TEXT,
         merk TEXT,
-        image TEXT,
+        tipe TEXT,
+        thnProduksi TEXT,
         descreption TEXT,
+        image TEXT,
       );
     ''');
   }
 
+  _onOpen(Database db) async {
+  // Database is open, print its version
+  print('db version ${await db.getVersion()}');
+}
 }
