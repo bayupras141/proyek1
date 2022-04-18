@@ -66,6 +66,11 @@ class TipeController extends Controller
         //
     }
 
+    public function produk()
+    {
+       return $this->hasOne(Produk::class);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

@@ -7,6 +7,16 @@
           <div class="col-sm-6">
             <h1 class="m-0">Produk</h1>
           </div>
+          <div class="col-sm-6">
+                @if (session('status'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('status') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+          </div>
         </div>
     </div><!-- /.container-fluid -->
 @endsection
@@ -47,7 +57,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($data as $row)
+                                @foreach ($produk as $row)
                                 <tr>      
                                
                                <td>{{ $loop->iteration }}</td>

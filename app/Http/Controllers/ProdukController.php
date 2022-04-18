@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produk;
+use App\Models\Tipe;
+use DB;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
@@ -15,8 +17,9 @@ class ProdukController extends Controller
     public function index()
     {
         // create return view Produk.index
-        $data = Produk::all();  
-        return view('produk.index', compact('data'));
+        return view('produk.index', [
+            'produk' => Produk::all()
+        ]);
     }
 
     /**
@@ -24,10 +27,17 @@ class ProdukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function tipe()
+    {
+    	return $this->hasMany(Tipe::class, 'id');
+    }
+
     public function create()
     {
-        // return to tipe.create
-        return view('produk.create');
+        // return to Produk.create
+        $type = Tipe::get();
+        return view('produk.create', compact('type'));
     }
 
 
@@ -39,6 +49,18 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
+        $produk = new Produk();
+        $produk -> nama = $request-> get('nama');
+        $produk -> warna = $request-> get('warna');
+        $produk -> harga = $request-> get('harga');
+        $produk -> stok = $request-> get('stok');
+        $produk -> type_id = $request-> get('type_id');
+        
+        $produk->  save();
+
+        //jika data berhasil ditambahkan, akan kembali ke halaman  dengan status success dan menampilkan pesan data berhasil ditambahkan
+        return redirect()->route('produk.index')
+            ->with('status', 'Produk Berhasil Ditambahkan');
         //
     }
 
@@ -61,6 +83,9 @@ class ProdukController extends Controller
      */
     public function edit(Produk $Produk)
     {
+        return view('produk.edit', [
+            'produk' => $produk
+        ]);
         //
     }
 
@@ -73,6 +98,22 @@ class ProdukController extends Controller
      */
     public function update(Request $request, Produk $Produk)
     {
+        $request->validate([
+            'nama' => 'required',
+            'warna' => 'required',
+            'harga' => 'required',
+            'stok' => 'required'
+        ]);
+
+        // update tipe
+        $Produk->nama = $request->nama;
+        $Produk->warna = $request->warna;
+        $Produk->harga = $request->harga;
+        $Produk->stok = $request->stok;
+        $Produk->save();
+
+        // return to tipe.index wirt success message
+        return redirect()->route('tipe.index')->with('status', 'Tipe berhasil diubah');
         //
     }
 
