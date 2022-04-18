@@ -20,10 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/laporan', [App\Http\Controllers\LaporanController::class, 'index'])->name('laporan');
 
-// create route resource tipe
+// create route resource
 Route::resource('tipe', App\Http\Controllers\TipeController::class);
-
 Route::resource('customer', App\Http\Controllers\CustomerController::class);
-
 Route::resource('produk', App\Http\Controllers\ProdukController::class);
+Route::resource('transaksi', App\Http\Controllers\TransaksiController::class);

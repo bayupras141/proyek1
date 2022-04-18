@@ -15,8 +15,16 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-            <a href="{{route('produk.create')}}" class="btn btn-primary">Tambah</a>
-
+                <div class="row">
+                    <div class="col-sm-6">
+                        
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="{{ route('produk.create') }}" class="btn btn-primary float-right">
+                            <i class="fas fa-plus"></i> Add Produk
+                        </a>
+                    </div>
+                </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -29,12 +37,14 @@
                         <div class="col-sm-12">
                             <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
                                 <thead>
-                                <tr>
-                                <th class="" >Nama</th>
-                                <th class="" >Warna</th>
-                                <th class="" >Harga</th>
-                                <th class="" >Stok</th>
-                            </tr>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Warna</th>
+                                        <th>Harga</th>
+                                        <th>Stok</th>
+                                        <th>Aksi</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($data as $row)
@@ -43,7 +53,7 @@
                                <td>{{ $loop->iteration }}</td>
                                <td>{{ $row->nama }}</td>
                                <td>{{ $row->warna }}</td>
-                               <td>{{ $row->harga }}</td>
+                                 <td>Rp {{ number_format($row->harga,0,',','.') }}</td>
                                <td>{{ $row->stok }}</td>
                                <td>
                                <a href="" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-primary">Edit</a>
