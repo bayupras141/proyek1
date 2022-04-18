@@ -15,9 +15,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-            <a href="" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-success">
-                
-            Tambah Data</a>
+            <a href="{{route('produk.create')}}" class="btn btn-primary">Tambah</a>
 
             </div>
             <!-- /.card-header -->
