@@ -83,9 +83,8 @@ class ProdukController extends Controller
      */
     public function edit(Produk $Produk)
     {
-        return view('produk.edit', [
-            'produk' => $produk
-        ]);
+        $type = Tipe::get();
+        return view('produk.edit', ['produk' => $Produk], compact('type'));
         //
     }
 
@@ -96,24 +95,18 @@ class ProdukController extends Controller
      * @param  \App\Models\Produk  $Produk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produk $Produk)
+    public function update(Request $request, Produk $produk)
     {
-        $request->validate([
-            'nama' => 'required',
-            'warna' => 'required',
-            'harga' => 'required',
-            'stok' => 'required'
-        ]);
-
-        // update tipe
-        $Produk->nama = $request->nama;
-        $Produk->warna = $request->warna;
-        $Produk->harga = $request->harga;
-        $Produk->stok = $request->stok;
-        $Produk->save();
+        $produk -> nama = $request-> get('nama');
+        $produk -> warna = $request-> get('warna');
+        $produk -> harga = $request-> get('harga');
+        $produk -> stok = $request-> get('stok');
+        $produk -> type_id = $request-> get('type_id');
+        
+        $produk->  save();
 
         // return to tipe.index wirt success message
-        return redirect()->route('tipe.index')->with('status', 'Tipe berhasil diubah');
+        return redirect()->route('produk.index')->with('status', 'Produk berhasil diubah');
         //
     }
 
@@ -125,6 +118,9 @@ class ProdukController extends Controller
      */
     public function destroy(Produk $Produk)
     {
+        $Produk->delete();
+        // return to tipe.index wirt success message
+        return redirect()->route('produk.index')->with('status', 'Produk berhasil dihapus');
         //
     }
 }

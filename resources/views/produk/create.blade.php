@@ -35,8 +35,6 @@
               </div>
               <div class="form-group{{ $errors->has('type_id') ? ' has-error' : '' }}">
                 <label for="type_id">Type Id</label>
-                 <!--<input type="text" class="form-control" id="exampleInputId" placeholder="Type_id">
-              </div>-->
              <select class="form-control" name="type_id" id="type_id">
                                 <option value="">(Cari Tipe)</option>
                                 @foreach ($type as $tipe)

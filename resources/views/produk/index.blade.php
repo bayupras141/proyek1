@@ -66,10 +66,14 @@
                                  <td>Rp {{ number_format($row->harga,0,',','.') }}</td>
                                <td>{{ $row->stok }}</td>
                                <td>
-                               <a href="" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-primary">Edit</a>
-                                <a id="btn-hapus" href="" onclick="return confirm('Yakin hapus data ? ');" data-toggle="tooltip" data-placement="bottom" title="Hapus" class="btn btn-danger">Hapus</a>
-                                                           
-                            </td></tr>
+                                            <a href="{{ route('produk.edit', [$row->id]) }}" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                            <form onsubmit="return confirm('Apakah anda yakin ingin menghapus?')" action="{{ route('produk.destroy', [$row->id]) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                </td>
+                            </tr>
                            @endforeach    
                             </tbody>
                         </table>

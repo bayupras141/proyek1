@@ -80,9 +80,7 @@ class TipeController extends Controller
     public function edit(Tipe $tipe)
     {
         // return to tipe.edit
-        return view('tipe.edit', [
-            'tipe' => $tipe
-        ]);
+        return view('tipe.edit', ['tipe' => $tipe]);
     }
 
     /**
