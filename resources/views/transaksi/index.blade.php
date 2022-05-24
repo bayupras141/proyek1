@@ -26,8 +26,9 @@
             </tr>
             </thead>
             <tbody>
+                {{-- loop data --}}
+                @foreach($data as $key => $row)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $row->invoice }}</td>
                     <td>{{ $row->total_bayar }}</td>
                     <td>{{ $row->diskon }}</td>
@@ -35,14 +36,15 @@
                     <td>{{ $row->total_bayar }}</td>
                     <td>{{ $row->status }}</td>
                     <td>
-                        <a href="{{ route('transaksi.show', 1)}}" class="btn btn-sm btn-info mb-2">
+                        {{-- <a href="{{ route('transaksi.show', 1)}}" class="btn btn-sm btn-info mb-2">
                             Detail
-                        </a>
-                        <a href="{{ route('transaksi.edit', 1)}}" class="btn btn-sm btn-primary mb-2">
+                        </a> --}}
+                        {{-- <a href="{{ route('transaksi.edit', 1)}}" class="btn btn-sm btn-primary mb-2">
                             Edit
-                        </a>
+                        </a> --}}
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

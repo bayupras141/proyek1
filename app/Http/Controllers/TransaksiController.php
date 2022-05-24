@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Models\Transaksi;
 
 class TransaksiController extends Controller{
     public function index(){
-        $data = array('title' => 'Data Transaksi');
-        return view ('transaksi.index', $data);
+
+        // return index with data
+        return view('transaksi.index', [
+            'data' => Transaksi::all()
+        ]);
     }
 
     public function create(){
