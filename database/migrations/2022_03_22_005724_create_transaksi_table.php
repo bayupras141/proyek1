@@ -17,6 +17,8 @@ class CreateTransaksiTable extends Migration
             $table->id();
             $table->string('invoice')->nullable();
             $table->integer('total_bayar')->unsigned()->nullable();
+            $table->integer('diskon')->unsigned()->nullable();
+            $table->integer('ongkir')->unsigned()->nullable();
             $table->enum('status',['Lunas', 'Belum lunas', 'Belum Bayar'])->default('Belum Bayar');
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('produk_id');

@@ -6,7 +6,7 @@
           <div class="col-sm-6">
             <h1 class="m-0">Customers</h1>
           </div>
-        </div>
+        </div class="col-sm-6">
         @if (session('status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('status') }}
@@ -22,10 +22,16 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-            <a href="{{route('customer.create')}}" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-success">
-                
-            Tambah Data</a>
-
+                <div class="row">
+                    <div class="col-sm-6">
+                        
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="{{ route('customer.create') }}" class="btn btn-primary float-right">
+                            <i class="fas fa-plus"></i> Add Customer
+                        </a>
+                    </div>
+                </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -39,22 +45,25 @@
                             <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
                                 <thead>
                                 <tr>
-                                    <th class="" >No</th>
-                                    <th class="" >Nik</th>
-                                    <th class="" >Nama</th>
-                                    <th class="" >Alamat</th>
-                                    <th class="" >Email</th>
-                                    <th class="" >Username</th>
-                                    <th class="" >No_hp</th>
-                                    <th class="" >jenis_kelamin</th>
-                                    <th class="" >Action</th>
+                                    <th>No</th>
+                                    <th>Nik</th>
+                                    <th>Nama</th>
+                                    <th>Alamat</th>
+                                    <th>Email</th>
+                                    <th>Username</th>
+                                    <th>No hp</th>
+                                    <th>Jenis kelamin</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $row)
                                     <tr>      
+<<<<<<< HEAD
                                
 
+=======
+>>>>>>> 285233935a2ed43bcfef61752ef9e52dc0dd1756
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $row->nik }}</td>
                                         <td>{{ $row->nama }}</td>
@@ -64,9 +73,7 @@
                                         <td>{{ $row->no_hp }}</td>
                                         <td>{{ $row->jenis_kelamin }}</td>
                                         <td>
-                                            {{-- edit button customer with class pencil --}}
                                             <a href="{{ route('customer.edit', [$row->id]) }}" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                            {{-- delete button customer with class trash --}}
                                             <form onsubmit="return confirm('Aakah anda yakin ingin menghapus?')" action="{{ route('customer.destroy', [$row->id]) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')

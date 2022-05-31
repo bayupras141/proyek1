@@ -7,6 +7,16 @@
           <div class="col-sm-6">
             <h1 class="m-0">Produk</h1>
           </div>
+          <div class="col-sm-6">
+                @if (session('status'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('status') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+          </div>
         </div>
     </div><!-- /.container-fluid -->
 @endsection
@@ -15,10 +25,16 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-            <a href="" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-success">
-                
-            Tambah Data</a>
-
+                <div class="row">
+                    <div class="col-sm-6">
+                        
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="{{ route('produk.create') }}" class="btn btn-primary float-right">
+                            <i class="fas fa-plus"></i> Add Produk
+                        </a>
+                    </div>
+                </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -41,7 +57,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($data as $row)
+                                @foreach ($produk as $row)
                                 <tr>      
                                
                                <td>{{ $loop->iteration }}</td>
@@ -50,10 +66,14 @@
                                  <td>Rp {{ number_format($row->harga,0,',','.') }}</td>
                                <td>{{ $row->stok }}</td>
                                <td>
-                               <a href="" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-primary">Edit</a>
-                                <a id="btn-hapus" href="" onclick="return confirm('Yakin hapus data ? ');" data-toggle="tooltip" data-placement="bottom" title="Hapus" class="btn btn-danger">Hapus</a>
-                                                           
-                            </td></tr>
+                                            <a href="{{ route('produk.edit', [$row->id]) }}" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                            <form onsubmit="return confirm('Apakah anda yakin ingin menghapus?')" action="{{ route('produk.destroy', [$row->id]) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                </td>
+                            </tr>
                            @endforeach    
                             </tbody>
                         </table>

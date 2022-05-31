@@ -22,4 +22,8 @@ class Produk extends Model
     // {
     //     return $this->hasMany(Transaksi::class, 'paket_id');
     // }
+    public function tipe()
+    {
+    	return $this->hasMany(Tipe::class, 'id');
+    }
 }

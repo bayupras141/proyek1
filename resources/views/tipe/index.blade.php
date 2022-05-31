@@ -6,8 +6,7 @@
           <div class="col-sm-6">
             <h1 class="m-0">Tipe</h1>
           </div>
-          <div>
-              {{-- create alert json succes message --}}
+          <div class="col-sm-6">
                 @if (session('status'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('status') }}
@@ -17,13 +16,6 @@
                 </div>
                 @endif
           </div>
-          <div class="col-sm-6">
-            {{-- create buuton --}}
-            <ol class="breadcrumb float-sm-right">
-              <a href="{{route('tipe.create')}}" class="btn btn-primary">Tambah</a>
-            </ol>
-
-          </div><!-- /.col -->
         </div>
     </div><!-- /.container-fluid -->
 @endsection
@@ -32,7 +24,16 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Table Tipe</h3>
+                <div class="row">
+                    <div class="col-sm-6">
+                        
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="{{ route('tipe.create') }}" class="btn btn-primary float-right">
+                            <i class="fas fa-plus"></i> Add Tipe
+                        </a>
+                    </div>
+                </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -58,7 +59,7 @@
                                         <td>{{ $row->jenis }}</td>
                                         <td>
                                             <a href="{{ route('tipe.edit', [$row->id]) }}" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                            <form onsubmit="return confirm('Aakah anda yakin ingin menghapus?')" action="{{ route('tipe.destroy', [$row->id]) }}" method="POST" class="d-inline">
+                                            <form onsubmit="return confirm('Apakah anda yakin ingin menghapus?')" action="{{ route('tipe.destroy', [$row->id]) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
