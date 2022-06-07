@@ -14,6 +14,8 @@ class Transaksi extends Model
     protected $fillable = [
         'invoice',
         'total_bayar',
+        'diskon',
+        'ongkir',
         'status',
         'customer_id',
         'produk_id',
