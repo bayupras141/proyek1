@@ -14,7 +14,6 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-<<<<<<< HEAD
                 @endif
           </div>
         </div>
@@ -58,7 +57,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($transaksi as $row)
+                                    @foreach ($data as $row)
                                     <tr class="odd">
                                         <td>{{ $row->invoice }}</td>
                                         <td>{{ $row->total_bayar }}</td>
@@ -83,49 +82,4 @@
                     </div>
                 </div>
           </div>  
-=======
-<div class="card-body">
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>No</th>
-                <th>Invoice</th>
-                <th>Sub Total</th>
-                <th>Diskon</th>
-                <th>Ongkir</th>
-                <th>Total</th>
-                <th>Status Pembayaran</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-                {{-- loop data --}}
-                @foreach($data as $key => $row)
-                <tr>
-                    <td>{{ $row->invoice }}</td>
-                    <td>{{ $row->total_bayar }}</td>
-                    <td>{{ $row->diskon }}</td>
-                    <td>{{ $row->ongkir }}</td>
-                    <td>{{ $row->total_bayar }}</td>
-                    <td>{{ $row->status }}</td>
-                    <td>
-                        {{-- <a href="{{ route('transaksi.show', 1)}}" class="btn btn-sm btn-info mb-2">
-                            Detail
-                        </a> --}}
-                        {{-- <a href="{{ route('transaksi.edit', 1)}}" class="btn btn-sm btn-primary mb-2">
-                            Edit
-                        </a> --}}
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-    </div>
-    </div>
-    </div>
->>>>>>> 1989eff0cda8476d0abec0a0e37ef96f9632d455
-    </div>
-</div>
 @endsection
