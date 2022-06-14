@@ -59,11 +59,6 @@
                                 <tbody>
                                     @foreach ($data as $row)
                                     <tr>      
-<<<<<<< HEAD
-                               
-
-=======
->>>>>>> 285233935a2ed43bcfef61752ef9e52dc0dd1756
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $row->nik }}</td>
                                         <td>{{ $row->nama }}</td>
