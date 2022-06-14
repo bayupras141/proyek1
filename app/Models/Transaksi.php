@@ -9,7 +9,7 @@ class Transaksi extends Model
 {
     use HasFactory;
 
-    protected $table = 'type';
+    protected $table = 'transaksi';
 
     protected $fillable = [
         'invoice',
