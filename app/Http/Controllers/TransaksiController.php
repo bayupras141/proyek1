@@ -6,15 +6,9 @@ use App\Models\Transaksi;
 
 class TransaksiController extends Controller{
     public function index(){
-<<<<<<< HEAD
-        return view('transaksi.index', [
-            'transaksi' => Transaksi::all()
-=======
-
         // return index with data
         return view('transaksi.index', [
             'data' => Transaksi::all()
->>>>>>> 1989eff0cda8476d0abec0a0e37ef96f9632d455
         ]);
     }
 
